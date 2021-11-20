@@ -1,3 +1,15 @@
 .App {
     text-align: center;
 }
+
+.title {
+    font-size: 40px;
+    margin: 40px;
+    font-weight: bold;
+}
+
+.results {
+    font-size: 30px;
+    margin: 30px;
+    font-weight: bold;
+}
