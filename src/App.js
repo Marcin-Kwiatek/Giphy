@@ -6,7 +6,6 @@ const APIKey = 'hJWmgJyN21BiI8eMqJUl7XrE8Jaci5WD'
 
 class App extends Component {
   state={
-    value: "",
     giphy: []
   }
   render(){
@@ -14,17 +13,16 @@ class App extends Component {
       <div className="App">
         <div className="title">Giphy Client</div>
         <input onChange={this.changeValue}></input>
-        <button onClick={this.searchGiphy} style={{margin:'10px'}}>Search</button>
         <div className="results">Results</div>
         <div className="resultsGiphy">{this.state.giphy.map(gif => <img key={gif.id} src={gif.images.downsized.url}></img> )}</div>
       </div>
     );
   }
   changeValue = e => {
-    this.setState({value:e.target.value})
+    this.searchGiphy(e.target.value)
   }
-  searchGiphy = () => {
-    const API = `https://api.giphy.com/v1/gifs/search?q=${this.state.value}&api_key=${APIKey}`
+  searchGiphy = (value) => {
+    const API = `https://api.giphy.com/v1/gifs/search?q=${value}&api_key=${APIKey}`
     fetch(API)
         .then(response => {
           if(response.ok){
