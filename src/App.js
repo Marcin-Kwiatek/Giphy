@@ -7,7 +7,7 @@ const APIKey = 'hJWmgJyN21BiI8eMqJUl7XrE8Jaci5WD'
 class App extends Component {
   state={
     value: "",
-    giphy: ""
+    giphy: []
   }
   render(){
     return (
@@ -16,7 +16,7 @@ class App extends Component {
         <input onChange={this.changeValue}></input>
         <button onClick={this.searchGiphy} style={{margin:'10px'}}>Search</button>
         <div className="results">Results</div>
-        <div className="resultsGiphy">{}</div>
+        <div className="resultsGiphy">{this.state.giphy.map(gif => <img key={gif.id} src={gif.images.downsized.url}></img> )}</div>
       </div>
     );
   }
