@@ -6,7 +6,8 @@ const APIKey = 'hJWmgJyN21BiI8eMqJUl7XrE8Jaci5WD'
 
 class App extends Component {
   state={
-    giphy: []
+    giphy: [],
+    setTimeoutId: null
   }
   render(){
     return (
@@ -19,7 +20,9 @@ class App extends Component {
     );
   }
   changeValue = e => {
-    this.searchGiphy(e.target.value)
+    clearTimeout(this.state.setTimeoutId)
+    let setTimeoutId = setTimeout(() => this.searchGiphy(e.target.value), 2000)
+    this.setState({setTimeoutId:setTimeoutId})
   }
   searchGiphy = (value) => {
     const API = `https://api.giphy.com/v1/gifs/search?q=${value}&api_key=${APIKey}`
